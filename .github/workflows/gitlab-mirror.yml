@@ -14,7 +14,8 @@ jobs:
         with:
           fetch-depth: 0  # Fetch the entire commit history
 
-      - name: Push to GitLab
+      - name: Push branches and tags to GitLab
         run: |
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.huma-num.fr/ecrinum/anthologia/ner-anthologia.git
-          git push --mirror gitlab
+          git push gitlab --branches
+          git push gitlab --tags
